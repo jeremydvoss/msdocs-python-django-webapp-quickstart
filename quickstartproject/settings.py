@@ -30,7 +30,8 @@ DEBUG = True
 # DEBUG = False
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME'], 'localhost', '*'] if 'WEBSITE_HOSTNAME' in os.environ else ["127.0.0.1"]
+# ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition

@@ -6,15 +6,15 @@ import sys
 import logging
 
 
+# from opentelemetry.instrumentation.django import DjangoInstrumentor
 # DjangoInstrumentor().instrument()
-# configure_azure_monitor()
 
 def main():
     """Run administrative tasks."""
+    from azure.monitor.opentelemetry import configure_azure_monitor
+    configure_azure_monitor()
 
     print("JEREVOSS: manage.py main")
-    from opentelemetry.instrumentation.django import DjangoInstrumentor
-    from azure.monitor.opentelemetry import configure_azure_monitor
     logging.warning("main")
     # When running in Azure, the WEBSITE_HOSTNAME environment variable is automatically set to
     # the URL of the app (e.g. msdocs-python-webapp-quickstart-123.azurewebsites.net)

@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from azure.monitor.opentelemetry import configure_azure_monitor
-configure_azure_monitor()
+# from azure.monitor.opentelemetry import configure_azure_monitor
+# configure_azure_monitor()
 
 import logging
 

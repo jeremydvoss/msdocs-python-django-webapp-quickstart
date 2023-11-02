@@ -1,8 +1,24 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-# from azure.monitor.opentelemetry import configure_azure_monitor
-# configure_azure_monitor()
+from azure.monitor.opentelemetry import configure_azure_monitor
+configure_azure_monitor()
+
+from opentelemetry.sdk._logs.export import ConsoleLogExporter, BatchLogRecordProcessor
+from opentelemetry._logs import get_logger_provider
+log_exporter = ConsoleLogExporter()
+log_record_processor = BatchLogRecordProcessor(
+    log_exporter,
+)
+get_logger_provider().add_log_record_processor(log_record_processor)
+
+from opentelemetry.sdk.trace.export import ConsoleSpanExporter, BatchSpanProcessor
+from opentelemetry.trace import get_tracer_provider
+trace_exporter = ConsoleSpanExporter()
+trace_processor = BatchSpanProcessor(
+    trace_exporter,
+)
+get_tracer_provider().add_span_processor(trace_processor)
 
 import logging
 

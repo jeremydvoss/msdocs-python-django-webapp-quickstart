@@ -11,8 +11,8 @@ import logging
 
 def main():
     """Run administrative tasks."""
-    from azure.monitor.opentelemetry import configure_azure_monitor
-    configure_azure_monitor()
+    # from azure.monitor.opentelemetry import configure_azure_monitor
+    # configure_azure_monitor()
 
     print("JEREVOSS: manage.py main")
     logging.warning("main")

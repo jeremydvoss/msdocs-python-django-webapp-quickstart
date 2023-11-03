@@ -20,6 +20,7 @@ def main():
     # the URL of the app (e.g. msdocs-python-webapp-quickstart-123.azurewebsites.net)
     settings_module = 'quickstartproject.production' if 'WEBSITE_HOSTNAME' in os.environ else 'quickstartproject.settings'
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
+    print("JEREVOSS: DJANGO_SETTINGS_MODULE: %s" % os.environ['DJANGO_SETTINGS_MODULE'])
 
     try:
         from django.core.management import execute_from_command_line

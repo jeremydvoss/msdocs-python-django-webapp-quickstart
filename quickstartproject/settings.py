@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'hello_azure'
 ]
 
-MIDDLEWARE = [                                                                   
+MIDDLEWARE = [       
+    'hello_azure.middleware.HealthCheckMiddleware',                                                            
     'django.middleware.security.SecurityMiddleware',
     # Add whitenoise middleware after the security middleware             
     'whitenoise.middleware.WhiteNoiseMiddleware',

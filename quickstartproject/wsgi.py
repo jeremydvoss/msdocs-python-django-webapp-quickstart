@@ -16,3 +16,9 @@ settings_module = 'quickstartproject.settings'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()
+
+from django.conf import settings
+print("JEREVOSS: settings.DEBUG: %s" % settings.DEBUG)
+print("JEREVOSS: settings.ALLOWED_HOSTS: %s" % settings.ALLOWED_HOSTS)
+settings_middleware = getattr(settings, "MIDDLEWARE", [])
+print("JEREVOSS: wsgi settings.MIDDLEWARE: %s" % settings_middleware)

@@ -23,6 +23,11 @@ get_tracer_provider().add_span_processor(trace_processor)
 import logging
 
 print("JEREVOSS: views.py")
+from django.conf import settings
+print("JEREVOSS: settings.DEBUG: %s" % settings.DEBUG)
+print("JEREVOSS: settings.ALLOWED_HOSTS: %s" % settings.ALLOWED_HOSTS)
+settings_middleware = getattr(settings, "MIDDLEWARE", [])
+print("JEREVOSS: veiws settings.MIDDLEWARE: %s" % settings_middleware)
 
 
 # from opentelemetry.instrumentation.django import DjangoInstrumentor

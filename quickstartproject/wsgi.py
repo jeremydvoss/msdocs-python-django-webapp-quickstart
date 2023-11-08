@@ -11,6 +11,13 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+from importlib_metadata import entry_points
+
+for entry_point in entry_points(group="opentelemetry_traces_exporter"):
+    print("JEREVOSS entry_point.name: %s" % entry_point.name)
+for entry_point in entry_points(group="opentelemetry_logs_exporter"):
+    print("JEREVOSS entry_point.name: %s" % entry_point.name)
+
 # settings_module = 'quickstartproject.production' if 'WEBSITE_HOSTNAME' in os.environ else 'quickstartproject.settings'
 settings_module = 'quickstartproject.settings'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)

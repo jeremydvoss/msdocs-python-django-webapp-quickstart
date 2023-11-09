@@ -12,7 +12,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 from importlib_metadata import entry_points
-
 for entry_point in entry_points(group="opentelemetry_traces_exporter"):
     print("JEREVOSS entry_point.name: %s" % entry_point.name)
 for entry_point in entry_points(group="opentelemetry_logs_exporter"):
@@ -23,6 +22,15 @@ settings_module = 'quickstartproject.settings'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
 application = get_wsgi_application()
+
+from os import environ
+
+print("JEREVOSS: PYTHONPATH: %s" % environ["PYTHONPATH"])
+from quickstartproject import settings
+print("JEREVOSS: settings: %s" % settings)
+from quickstartproject.settings import ALLOWED_HOSTS
+print("JEREVOSS: ALLOWED_HOSTS: %s" % ALLOWED_HOSTS)
+
 
 from django.conf import settings
 print("JEREVOSS: settings.DEBUG: %s" % settings.DEBUG)

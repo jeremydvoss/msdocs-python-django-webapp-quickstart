@@ -13,3 +13,4 @@ class HealthCheckMiddleware:
         if request.path == "/api/health":
             return HttpResponse("ok\n")
         return self.get_response(request)
+    

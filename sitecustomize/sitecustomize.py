@@ -15,6 +15,7 @@
 from logging import getLogger, DEBUG
 from os import environ
 from os.path import abspath, dirname, pathsep
+from sys import path
 
 from opentelemetry.instrumentation.dependencies import (
     get_dependency_conflicts,
@@ -83,6 +84,7 @@ def _load_instrumentors(distro):
                     app_path = environ['APP_PATH']
                     pythonpath = environ['PYTHONPATH']
                     environ['PYTHONPATH'] = pythonpath + pathsep + app_path
+                    path.append(app_path)
                 except:
                     logger.warning("Failed to add APP_PATH to PYTHONPATH")
             # tell instrumentation to not run dep checks again as we already did it above

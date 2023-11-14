@@ -81,7 +81,7 @@ def _load_instrumentors(distro):
                 try:
                     app_path = environ['APP_PATH']
                     pythonpath = environ['PYTHONPATH']
-                    environ['PYTHONPATH'] = "{0}:{1}".format(pythonpath, app_path)
+                    environ['PYTHONPATH'] = pythonpath + pathsep + app_path
                 except:
                     logger.warning("Failed to add APP_PATH to PYTHONPATH")
             # tell instrumentation to not run dep checks again as we already did it above

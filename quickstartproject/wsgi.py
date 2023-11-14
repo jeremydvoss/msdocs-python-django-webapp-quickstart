@@ -28,6 +28,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 logger.warning("JEREVOSS: PYTHONPATH: %s" % environ["PYTHONPATH"])
+print("JEREVOSS: PYTHONPATH: %s" % environ["PYTHONPATH"])
 from quickstartproject import settings
 logger.warning("JEREVOSS: settings: %s" % settings)
 from quickstartproject.settings import ALLOWED_HOSTS

@@ -82,14 +82,15 @@ def _load_instrumentors(distro):
             if entry_point.name == 'django':
                 try:
                     app_path = environ['APP_PATH']
-                    pythonpath = environ['PYTHONPATH']
-                    environ['PYTHONPATH'] = pythonpath + pathsep + app_path
                     path.append(app_path)
                 except:
                     logger.warning("Failed to add APP_PATH to PYTHONPATH")
             # tell instrumentation to not run dep checks again as we already did it above
             distro.load_instrumentor(entry_point, skip_dep_check=True)
             logger.debug("Instrumented %s", entry_point.name)
+            if entry_point.name == 'django':
+                app_path = environ['APP_PATH']
+                path.remove(app_path)
         except Exception as exc:  # pylint: disable=broad-except
             logger.exception("Instrumenting of %s failed", entry_point.name)
             print(exc)

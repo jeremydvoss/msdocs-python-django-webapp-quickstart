@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from logging import getLogger
+from logging import getLogger, DEBUG
 from os import environ
 from os.path import abspath, dirname, pathsep
 
@@ -32,6 +32,7 @@ from azure.monitor.opentelemetry._autoinstrumentation.distro import AzureMonitor
 from azure.monitor.opentelemetry._autoinstrumentation.configurator import AzureMonitorConfigurator
 
 logger = getLogger(__name__)
+logger.setLevel(DEBUG)
 
 
 def _load_distros() -> BaseDistro:

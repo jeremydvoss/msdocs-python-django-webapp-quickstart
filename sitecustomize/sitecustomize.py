@@ -90,6 +90,7 @@ def _load_instrumentors(distro):
             logger.debug("Instrumented %s", entry_point.name)
         except Exception as exc:  # pylint: disable=broad-except
             logger.exception("Instrumenting of %s failed", entry_point.name)
+            print(exc)
             raise exc
 
     for entry_point in iter_entry_points("opentelemetry_post_instrument"):
